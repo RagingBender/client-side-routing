@@ -33,5 +33,10 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
       .then(callback)
       .catch(errorCallback);
 
+  Book.fetchOne = (id) => {
+    return $.getJSON(ENV.apiUrl +'/api/v1/books' + id)
+      .catch(err => console.error(err));
+  };
+
   module.Book = Book;
 })(app)

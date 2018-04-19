@@ -9,11 +9,11 @@ var app = app || {};
     $('.container').hide();
     $('.book-view').show();
     module.Book.all.map(book => $('#book-list').append(book.toHtml()));
-  }
+  };
 
   module.bookView = bookView;
-})(app)
+})(app);
 
 $(function() {
   app.Book.fetchAll(app.bookView.initIndexPage);
-})
+});
