@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // Application dependencies
 const express = require('express');
@@ -7,7 +7,7 @@ const pg = require('pg');
 
 // Application Setup
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const CLIENT_URL = process.env.CLIENT_URL;
 
 // Database Setup
@@ -20,7 +20,7 @@ app.use(cors());
 
 // API Endpoints
 app.get('/api/v1/books', (req, res) => {
-  client.query(`SELECT book_id, title, author, image_url, isbn FROM books;`)
+  client.query(`SELECT book_id, title, author, img_url, isbn FROM books;`)
     .then(results => res.send(results.rows))
     .catch(console.error);
 });
