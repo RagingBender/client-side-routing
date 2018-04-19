@@ -25,5 +25,15 @@ app.get('/api/v1/books', (req, res) => {
     .catch(console.error);
 });
 
+app.get('/api/v1/books/:id', (req, res) => {
+  client.query(`SELECT book_id FROM books;`)
+    .then(results => {
+      res.send(results.rows);
+    })
+    .catch(err => {
+      console.error(err)
+    });
+});
+
 app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
