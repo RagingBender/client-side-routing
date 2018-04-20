@@ -19,7 +19,9 @@
     "browser": true,
     "jquery": true,
     "node": true,
-    "es6": true
+    "es6": true,
+    "amd": true,
+    "page": true
   },
   "rules": {
     "eqeqeq": ["error", "always"],
