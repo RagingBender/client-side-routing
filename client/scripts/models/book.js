@@ -39,4 +39,4 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
   };
 
   module.Book = Book;
-})(app)
+})(app);

@@ -1,13 +1,14 @@
 'use strict';
 
 // Application dependencies
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const pg = require('pg');
 
 // Application Setup
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 const CLIENT_URL = process.env.CLIENT_URL;
 
 // Database Setup
@@ -26,12 +27,14 @@ app.get('/api/v1/books', (req, res) => {
 });
 
 app.get('/api/v1/books/:id', (req, res) => {
-  client.query(`SELECT book_id FROM books;`)
+  client.query(`SELECT * FROM books WHERE book_id=$1;`,
+    [req.params.id]
+  )
     .then(results => {
       res.send(results.rows);
     })
     .catch(err => {
-      console.error(err)
+      console.error(err);
     });
 });
 
