@@ -20,8 +20,7 @@
     "jquery": true,
     "node": true,
     "es6": true,
-    "amd": true,
-    "page": true
+    "amd": true
   },
   "rules": {
     "eqeqeq": ["error", "always"],
