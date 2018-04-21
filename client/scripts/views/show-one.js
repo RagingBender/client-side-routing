@@ -1,25 +1,25 @@
-'use strict';
+// 'use strict';
 
-var app = app || {};
+// var app = app || {};
 
-(function(module) {
-  const showOne = {};
+// (function(module) {
+// const showOne = {};
 
-  showOne.initIndexPage = function() {
-    $('.container').hide();
-    $('.detail-view').show();
-    // const id = $(event.target).parent().data('bookid');
-    // page('/api/v1/books/' + id);
-    $('#book-detail').off().on('click','button', ()=> {
-      page('/book-detail')
-    })
-    let template = Handlebars.compile($('#show-one-template').text());
-    $('.detail-view').append(template);
-  };
+// showOne.initIndexPage = function() {
+// $('.container').hide();
+// $('.detail-view').show();
+// // const id = $(event.target).parent().data('bookid');
+// // page('/api/v1/books/' + id);
+// $('#book-detail').off().on('click','button', ()=> {
+// page('/book-detail')
+// });
+// let template = Handlebars.compile($('#show-one-template').text());
+// $('.detail-view').append(template);
+// };
 
 
-  module.showOne = showOne;
-})(app);
+// module.showOne = showOne;
+// })(app);
 
 
 // $('#edit-name').val(thing.name);

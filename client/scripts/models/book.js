@@ -39,8 +39,17 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
   };
 
   Book.create = book =>
-    $.post(ENV.apiUrl + '/api/v1/books', book)
+    $.post(`${ENV.apiUrl}/api/v1/books/${book}`)
       .catch(err => console.error(err));
+
+  Book.prototype.insertRecord = function(callback) {
+    $.post(`${ENV.apiUrl}/api/v1/books/`, {
+      title: this.title, author: this.author, isbn: this.isbn, img_url: this.img_url, description: this.description})
+      .then(data => {
+        console.log(data);
+        if(callback) callback;
+      });
+  };
 
   module.Book = Book;
 })(app);

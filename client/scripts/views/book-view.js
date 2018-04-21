@@ -10,6 +10,7 @@ var app = app || {};
     $('.book-view').show();
     module.Book.all.map(book => $('#book-list').append(book.toHtml()));
   };
+
   bookView.oneBook = (bookdata) => {
     console.log("bookdata", bookdata);
     $('.container').hide();
@@ -18,7 +19,17 @@ var app = app || {};
     // module.Book.map(book => $('.detail-view').append(template).toHtml());
     $('.detail-view').append(template(bookdata));
   };
-  module.bookView = bookView; 
+
+  const createPage = {};
+
+  createPage.init = () => {
+    $('.form-view').off().on('submit', 'form', (event) => {
+      event.preventDefault();
+      $('#book-list').empty();
+    });
+    $('.form-view').show();
+  };
+  module.bookView = bookView;
 })(app);
 
 $(function () {
