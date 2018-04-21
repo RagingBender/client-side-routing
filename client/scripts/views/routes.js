@@ -6,7 +6,7 @@ page('/*', (ctx, next) => {
 });
 
 page('/', app.bookView.initIndexPage);
-// page('/books/:book_id', (ctx) => app.Book.fetchOne(ctx.params.id));
-// page('/books/new');
+// page('/books/:book_id', app.showOne.initIndexPage);
+page('/books/new', app.formView.initIndexPage);
 
 page.start();
