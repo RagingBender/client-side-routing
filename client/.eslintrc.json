@@ -7,11 +7,16 @@
     }
   },
   "globals": {
-    "Chart": true
+    "Chart": true,
+    "Handlebars": true,
+    "page": true,
+    "app": true
   },
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "node" : true,
+    "jquery": true
   },
   "rules": {
     "eqeqeq": ["error", "always"],
