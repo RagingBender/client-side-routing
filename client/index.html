@@ -26,8 +26,18 @@
           <p>{{author}}</p>
         </div>
       </div>
+      <button><a href="/api/v1/books/id">view details</a></button>
     </li>
   </script>
+
+  <script type="text/x-handlebars-template" id="show-one-template">
+    <h1>{{title}}</h1>
+    <p>{{author}}</p>
+    <p>isbn {{isbn}}</p>
+    <img src={{img_url}}>
+    <p>{{description}}</p>
+  </script>
+
 </head>
 <body>
   <header>
@@ -35,8 +45,14 @@
       <a href="/"><img src="http://www.bootcamps.in/wp-content/uploads/2015/06/code-fellows-shield.png" alt="logo"></a>
       <h1>Code Fellows Books</h1>
     </div>
+    <div class = "icon-menu"></div>
+    <ul>
+      <li class="tab"><a href="/">View All Books</a></li>
+      <li class="tab"><a href="/new">Add A New Book</a></li>
+    </ul>
   </header>
   <main>
+
     <section class="error-view container">
       <h2 class="view-title">There be an issue, cap'n</h2>
       <section id="error-message"></section>
@@ -49,9 +65,6 @@
     </section>
     <section class="detail-view container">
       <h2 class="view-title">Details</h2>
-    </section>
-    <section class="show-one container">
-      <h2 class="view-title">test</h2>
     </section>
     <section class="form-view container">
       <h2 class="view-title">Form</h2>
