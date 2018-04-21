@@ -7,6 +7,6 @@ page('/*', (ctx, next) => {
 
 page('/', app.bookView.initIndexPage);
 // page('/books/:book_id', app.showOne.initIndexPage);
-page('/books/new', app.formView.initIndexPage);
+page('/new', app.formView.initIndexPage);
 
 page.start();
