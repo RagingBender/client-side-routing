@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 const CLIENT_URL = process.env.CLIENT_URL;
 
 // Database Setup
-const client = new pg.Client(process.env.DATABASE_URL);
+const client = new pg.Client(process.env.DATABASE_URL || 'postgres://postgres:Achika1220!@localhost:5432/books_app');
 client.connect();
 client.on('error', err => console.error(err));
 
