@@ -8,11 +8,11 @@ const pg = require('pg');
 
 // Application Setup
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const CLIENT_URL = process.env.CLIENT_URL;
 
 // Database Setup
-const client = new pg.Client(process.env.DATABASE_URL);
+const client = new pg.Client(process.env.DATABASE_URL || 'postgres://postgres:Achika1220!@localhost:5432/books_app');
 client.connect();
 client.on('error', err => console.error(err));
 
@@ -32,7 +32,7 @@ app.get('/api/v1/books/:id', (req, res) => {
   client.query(`
   SELECT * FROM books 
   WHERE book_id=$1;`,
-  [req.params.id]
+    [req.params.id]
   )
     .then(results => {
       res.send(results.rows);
@@ -47,11 +47,12 @@ app.post('/api/v1/books/', (req, res) => {
   INSERT INTO books(book_id, title, author, img_url, isbn) 
   VALUES ($1,$2,$3,$4,$5) 
   ON CONFLICT DO NOTHING;`,
-  [req.body.book_id, req.body.title, req.body.author, req.body.img_url, req.body.isbn],
-  function (err) {
-    if (err) console.error(err);
-    res.send('insertion completed');
-  });
+    [req.body.book_id, req.body.title, req.body.author, req.body.img_url, req.body.isbn],
+    function (err) {
+      if (err) console.error(err);
+      res.send('insertion completed');
+    });
 });
+
 app.get('*', (req, res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));

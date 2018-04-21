@@ -9,7 +9,7 @@ ENV.productionApiUrl = 'https://jl-tc-pk-booklist.herokuapp.com/';
 ENV.developmentApiUrl = 'http://localhost:3000';
 ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
 
-(function(module) {
+(function (module) {
   function errorCallback(err) {
     console.error(err);
     module.errorView.initErrorPage(err);
@@ -19,7 +19,7 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
     Object.keys(rawBookObj).forEach(key => this[key] = rawBookObj[key]);
   }
 
-  Book.prototype.toHtml = function() {
+  Book.prototype.toHtml = function () {
     let template = Handlebars.compile($('#book-list-template').text());
     return template(this);
   };
@@ -34,9 +34,13 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
       .catch(errorCallback);
 
   Book.fetchOne = (id) => {
-    return $.getJSON(ENV.apiUrl +'/api/v1/books' + id)
+    return $.getJSON(ENV.apiUrl + '/api/v1/books' + id)
       .catch(err => console.error(err));
   };
+
+  Book.create = book =>
+    $.post(ENV.apiUrl + '/api/v1/books', book)
+      .catch(err => console.error(err));
 
   module.Book = Book;
 })(app);
