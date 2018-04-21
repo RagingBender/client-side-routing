@@ -35,7 +35,7 @@ app.get('/api/v1/books/:id', (req, res) => {
     [req.params.id]
   )
     .then(results => {
-      res.send(results.rows);
+      res.send(results.rows[0]);
     })
     .catch(err => {
       console.error(err);
