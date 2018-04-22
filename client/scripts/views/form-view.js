@@ -6,22 +6,19 @@ var app = app || {};
   const formView = {};
 
   formView.initIndexPage = function() {
-    $('#book-list').empty();
     $('.container').hide();
     $('.form-view').show();
-    $('.form-view').off().on('submit', 'form', (event) => {
+    $('#add-form').on('submit', function (event) {
       event.preventDefault();
-      let book = new Book({
-        title: $('#title').val(),
-        author: $('#author').val(),
-        authorUrl: $('#isbn').val(),
-        category: $('#img_url').val(),
-        body: $('#descriptino').val()
-      });
-      book.insertRecord();
-      window.location = '../';
+      let book = {
+        title: event.target.title.value,
+        author: event.target.author.value,
+        isbn: event.target.isbn.value,
+        img_url: event.target.img_url.value,
+        description: event.target.description.value
+      };
+      module.Book.create(book);
     });
   };
   module.formView = formView;
-
 })(app);

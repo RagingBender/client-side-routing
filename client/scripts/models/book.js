@@ -38,18 +38,16 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
       .catch(err => console.error(err));
   };
 
-  Book.create = book =>
-    $.post(`${ENV.apiUrl}/api/v1/books/${book}`)
+  Book.create = book => {
+    $.post(ENV.apiUrl + '/api/v1/books/', book)
+      .then(() => page('/'))
       .catch(err => console.error(err));
-
-  Book.prototype.insertRecord = function(callback) {
-    $.post(`${ENV.apiUrl}/api/v1/books/`, {
-      title: this.title, author: this.author, isbn: this.isbn, img_url: this.img_url, description: this.description})
-      .then(data => {
-        console.log(data);
-        if(callback) callback;
-      });
   };
 
+  Book.prototype.insertRecord = function(callback) {
+    $.post(`${ENV.apiUrl}/api/v1/books/`,
+      {title: this.title, author: this.author, isbn: this.isbn, img_url: this.img_url, description: this.description})
+      .then(callback);
+  };
   module.Book = Book;
 })(app);

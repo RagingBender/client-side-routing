@@ -18,6 +18,7 @@ client.on('error', err => console.error(err));
 
 // Application Middleware
 app.use(cors());
+app.use(express.urlencoded({extended:true}));
 
 // API Endpoints
 app.get('/api/v1/books', (req, res) => {
@@ -44,10 +45,10 @@ app.get('/api/v1/books/:id', (req, res) => {
 
 app.post('/api/v1/books/', (req, res) => {
   client.query(`
-  INSERT INTO books(title, author, img_url, isbn) 
-  VALUES ($1,$2,$3,$4) 
+  INSERT INTO books(title, author, img_url, isbn, description) 
+  VALUES ($1,$2,$3,$4,$5) 
   ON CONFLICT DO NOTHING;`,
-  [req.body.title, req.body.author, req.body.img_url, req.body.isbn],
+  [req.body.title, req.body.author, req.body.img_url, req.body.isbn, req.body.description],
   function (err) {
     if (err) console.error(err);
     res.send('insertion completed');
