@@ -37,7 +37,7 @@
 .book-overlay * {
   text-transform: capitalize;
   text-align: center;
-  padding: 2vw;
+  padding: 1vw;
 }
 
 .social-links ul {
@@ -65,4 +65,25 @@
 #error-message p {
   font-size: 3vw;
   color: #d13227;
+}
+
+.icon-menu {
+  margin-right: 10px;
+  font-size: 48px;
+}
+
+.book-container {
+  text-align: center;
+}
+
+.book-container button {
+  float: right;
+  width: 120px;
+  height: 30px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.book-container p {
+  margin-left: 20%;
 }
