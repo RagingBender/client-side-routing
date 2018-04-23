@@ -20,3 +20,40 @@ header h1 {
   height: 30%;
   margin: auto;
 }
+
+#hamburger {
+  text-align: right;
+  width: 100%;
+}
+
+.book-items {
+  margin: 5% auto 0 auto;
+  width: 80%;
+  height: 300px;
+}
+
+.form-view container {
+  margin: auto;
+  width: 80%;
+}
+
+#add-form {
+  width: 40%;
+  margin: auto;
+}
+
+input {
+  width: 100%;
+  margin-top: 10%;
+  padding: 15px;
+}
+
+#add-form button {
+  width: 200px;
+  height: 50px;
+  font-size: 16px;
+  background-color: rgb(53, 53, 53);
+  color: white;
+  float: right;
+  margin-top: 10%;
+}
